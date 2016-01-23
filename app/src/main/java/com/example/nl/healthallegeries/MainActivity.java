@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -35,6 +36,9 @@ import com.spotify.sdk.android.player.PlayerState;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener,
     PlayerNotificationCallback, ConnectionStateCallback{
+=======
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
+>>>>>>> parent of 0dea450... Added spotify compatibility
 
     private Button bMainScan, bMainSettings, bMainLogout;
     private TextView gestureEvent;
@@ -99,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onTouch(View v, MotionEvent event) {
         return false;
     }
+<<<<<<< HEAD
 
     // TODO: Replace with your client ID
     private static final String CLIENT_ID = "a6bb6713adee499c94a26d64de4f7e23";
@@ -184,4 +189,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Spotify.destroyPlayer(this);
         super.onDestroy();
     }
+=======
+>>>>>>> parent of 0dea450... Added spotify compatibility
 }
