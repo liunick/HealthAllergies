@@ -18,6 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Right"
+            android:label="@string/title_activity_right"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Left"
+            android:label="@string/title_activity_left"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
