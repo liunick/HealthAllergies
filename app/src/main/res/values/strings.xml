@@ -4,4 +4,6 @@
     <string name="title_activity_login">Login</string>
     <string name="title_activity_right">Right</string>
     <string name="title_activity_left">Left</string>
+    <string name="title_activity_open_connection">OpenConnection</string>
+    <string name="title_activity_add_song">AddSong</string>
 </resources>

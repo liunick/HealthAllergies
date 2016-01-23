@@ -29,6 +29,14 @@
         <activity
             android:name=".Left"
             android:label="@string/title_activity_left"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OpenConnection"
+            android:label="@string/title_activity_open_connection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddSong"
+            android:label="@string/title_activity_add_song"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
