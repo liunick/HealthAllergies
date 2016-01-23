@@ -15,12 +15,12 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
         android:textSize="32sp"
-        android:text="Allergy Alert" />
+        android:text="Playlist App" />
 
     <Button
         android:id="@+id/bMainScan"
         android:layout_width="match_parent"
-        android:text="Scan Barcode"
+        android:text="Open Connections"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:paddingTop="10dp"
@@ -30,7 +30,7 @@
     <Button
         android:id="@+id/bMainSettings"
         android:layout_width="match_parent"
-        android:text="Settings"
+        android:text="Add Song"
         android:paddingBottom="10dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"/>
