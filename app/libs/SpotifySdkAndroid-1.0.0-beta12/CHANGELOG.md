@@ -24,7 +24,6 @@ Version 1.0.0-beta11
 * LoginActivity stays open when fetching authentication code for 2-step Facebook authentication ([Issue #145](https://github.com/spotify/android-sdk/issues/145))
 * `allowBackup=true` was removed from libraries' manifests ([Issue #153](https://github.com/spotify/android-sdk/issues/153))
 
-
 Version 1.0.0-beta10
 ====================
 
@@ -40,7 +39,6 @@ Version 1.0.0-beta10
 * Potentially infinite loop in the Player initialization has been fixed.
 * Internal buffer size has been increased to better accommodate for unstable network connections. ([Issue #98](https://github.com/spotify/android-sdk/issues/102))
 
-
 Version 1.0.0-beta9
 ===================
 
@@ -54,7 +52,7 @@ Version 1.0.0-beta9
   ```java
   // Before 1.0.0-beta9
   compile 'com.spotify.sdk:spotifysdk:1.0.0-beta9@aar'
-
+  
   // From 1.0.0-beta9
   compile 'com.spotify.sdk:spotify-player:1.0.0-beta9@aar'
   compile 'com.spotify.sdk:spotify-auth:1.0.0-beta9@aar'
@@ -78,7 +76,6 @@ Version 1.0.0-beta9
 
 * Unavailable track error currently reports wrong uri.
 
-
 Version 1.0.0-beta8
 ===================
 
@@ -86,7 +83,7 @@ Version 1.0.0-beta8
 
 * Login flow in the WebView. It is no longer necessary to open the web browser
   to log users in. See `AuthenticationClient#openLoginActivity` for details.
-* `PlayerState` now implements `Parcelable`.
+* `PlayerState` now implements Parcelable.
 * `Spotify#getPlayer` method is static.
 
 **Known bugs**
@@ -140,7 +137,7 @@ Version 1.0.0-beta6
   Player player = spotify.getPlayer(context, "mycompany", referenceObj, initObserver);
 
   // New way
-  Spotify spotify = new Spotify();
+  Spotify spotify = new Spotify("myauthtoken");
   Config playerConfig = new Config(context, "myauthtoken", "myclientid");
   Player player = spotify.getPlayer(playerConfig, referenceObj, initObserver);
   ```
@@ -159,7 +156,6 @@ Version 1.0.0-beta6
   playback error triggered.
 * The same issue occurs when trying to play a song with the initial position that is
   beyond its duration.
-
 
 Version 1.0.0-beta5
 ===================
@@ -185,6 +181,7 @@ Version 1.0.0-beta5
 
 * `InitializationObserver#onError` callback is now delivered correctly on the UI thread.
 
+
 Version 1.0.0-beta4
 ===================
 
@@ -209,6 +206,7 @@ Version 1.0.0-beta4
 **Bugs fixed:**
 
 * SDK does not mix playback with Spotify App. ([Issue #28](https://github.com/spotify/android-sdk/issues/28))
+
 
 Version 1.0.0-beta3
 ===================
@@ -239,7 +237,7 @@ Version 1.0.0-beta2
 * getPlaybackPosition returns correct values after seeking position
  ([Issue #7](https://github.com/spotify/android-sdk/issues/7)).
 
-**Known Issues:**
+Known Issues:
 
 * You can't play albums yet.
 * Switching between playback contexts is buggy.
