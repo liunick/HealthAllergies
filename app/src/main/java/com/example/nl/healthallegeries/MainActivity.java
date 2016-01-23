@@ -23,6 +23,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.spotify.sdk.android.authentication.AuthenticationClient;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+import com.spotify.sdk.android.authentication.AuthenticationResponse;
+import com.spotify.sdk.android.player.Config;
 import com.spotify.sdk.android.player.Spotify;
 import com.spotify.sdk.android.player.ConnectionStateCallback;
 import com.spotify.sdk.android.player.Player;
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView gestureEvent;
     private float x1, x2;
     private float MIN_DISTANCE = 150;
+    private static final int REQUEST_CODE = 1337;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bMainSettings.setOnClickListener(this);
         bMainLogout.setOnClickListener(this);
 
+        AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
+                AuthenticationResponse.Type.TOKEN,
+                REDIRECT_URI);
+        builder.setScopes(new String[]{"user-read-private", "streaming"});
+        AuthenticationRequest request = builder.build();
 
+        AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
     }
 
     public boolean onTouchEvent(MotionEvent event) {
@@ -99,6 +110,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
+
+        // Check if result comes from the correct activity
+        if (requestCode == REQUEST_CODE) {
+            AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
+            if (response.getType() == AuthenticationResponse.Type.TOKEN) {
+                Config playerConfig = new Config(this, response.getAccessToken(), CLIENT_ID);
+                Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
+                    @Override
+                    public void onInitialized(Player player) {
+                        mPlayer = player;
+                        mPlayer.addConnectionStateCallback(MainActivity.this);
+                        mPlayer.addPlayerNotificationCallback(MainActivity.this);
+                        mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        Log.e("MainActivity", "Could not initialize player: " + throwable.getMessage());
+                    }
+                });
+            }
+        }
     }
 
     @Override
@@ -129,15 +162,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
         Log.d("MainActivity", "Playback event received: " + eventType.name());
+        switch (eventType) {
+            // Handle event type as necessary
+            default:
+                break;
+        }
     }
 
     @Override
     public void onPlaybackError(ErrorType errorType, String errorDetails) {
         Log.d("MainActivity", "Playback error received: " + errorType.name());
+        switch (errorType) {
+            // Handle error type as necessary
+            default:
+                break;
+        }
     }
 
     @Override
     protected void onDestroy() {
+        Spotify.destroyPlayer(this);
         super.onDestroy();
     }
 }

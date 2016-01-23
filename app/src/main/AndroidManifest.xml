@@ -38,6 +38,9 @@
             android:name=".AddSong"
             android:label="@string/title_activity_add_song"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.spotify.sdk.android.authentication.LoginActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>
